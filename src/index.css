@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.h-color {
+  height: 45vh;
+}
+
+.w-200px {
+  width: 200px;
+}
+
+.mr-x {
+  margin-right: 14%
+}
+
 body {
-  font-family: monospace;
+  @apply font-mono text-indigo-900
 }
