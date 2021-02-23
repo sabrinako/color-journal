@@ -13,21 +13,20 @@ const Login = () => {
     const { login } = useAuth()
 
     async function handleSubmit(e) {
-    setError("")
-    e.preventDefault()
-        try {
-            await login(inputEmail.current.value, inputPass.current.value)
-            history.push("/")
-        } catch {
-            setError("FAILED TO LOGIN")
-        }
+        setError("")
+        e.preventDefault()
+        login(inputEmail.current.value, inputPass.current.value)
+            .catch(() => {
+                setError("FAILED TO LOGIN")
+            })
+        history.push("/")
     }
 
     return (
     <div className="flex flex-col h-screen justify-center items-center">
         <h1 className="text-3xl font-bold text-indigo-600 mb-3">Color Journal</h1>
         <div className="container grid bg-white w-5/6 shadow-md rounded-lg justify-items-center">
-        <div className="mb-3 min-w-full p-5">
+        <div className="mb-3 min-w-full p-4">
             <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
             <h2 className="text-2xl font-bold">Login</h2>
             { error && <div className="rounded-sm shadow-sm border-2 border-red-600 font-bold bg-red-200 text-red-800 p-2">{error}</div> }

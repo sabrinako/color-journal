@@ -1,6 +1,6 @@
 import '../App.css';
 import { AuthProvider } from '../contexts/AuthContext';
-import Dashboard from './Dashboard'
+import Dashboard from './Home/Dashboard'
 import Login from './Login'
 import Signup from './Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
