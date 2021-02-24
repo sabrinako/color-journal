@@ -2,4 +2,5 @@ node_modules
 .firebase
 ui-debug.log
 database-debug.log
+firebase-debug.log
 build

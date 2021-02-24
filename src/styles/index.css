@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+:root {
+  --bold-weight: 700;
+  --nunito: "Nunito", sans-serif;
+  --indigo-light: #e0e7ff;
+  --indigo: #4f46e5;
+  --indigo-hover: #4338ca;
+  --indigo-dark: #4338ca;
+}
+.h-color {
+  height: 45vh;
+}
+
+.w-200px {
+  width: 200px;
+}
+
+.mr-x {
+  margin-right: 14%
+}
+
+body {
+  font-family: var(--nunito);
+  text-align: center;
+  color: black;
+}
+
+h1 {
+  color: var(--indigo);
+  font-size: xx-large;
+  font-weight: var(--bold-weight);
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  color: var(--indigo);
+}
+
+h3 {
+  color: var(--indigo);
+}
+
+a {
+  display: inline-block;
+  color: var(--indigo-dark);
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: underline var(--indigo);
+}
+
+.indigo-button {
+  display: inline-flex;
+  justify-content: center;
+  font-family: var(--nunito);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+  font-size: small;
+  color: white;
+  background-color: var(--indigo);
+}
+
+.indigo-button:hover {
+  background-color: var(--indigo-hover);
+}
+
+.indigo-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--indigo-hover) ;
+}
+
+.error-callout {
+  border-radius: 5px;
+  font-weight: var(--bold-weight);
+  background-color: orangered;
+  color: maroon;
+  padding: 1rem;
+}

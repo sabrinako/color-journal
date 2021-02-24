@@ -1,47 +1,49 @@
 import React, { useState, useEffect } from 'react'
 import 'firebase/database'
-
+import { useAuth } from '../../contexts/AuthContext'
+import app from '../../firebase'
 
 function formatDate(utcSeconds) {
     let date = new Date(0)
     console.log(utcSeconds)
     date.setUTCMilliseconds(utcSeconds)
     return (
-        <div className="sticky self-center bg-white rounded-full shadow-md p-2">
+        <div className="date-label">
             {date.toLocaleDateString("en-US")}
         </div>
     )
 }
 
-export default function Newsfeed(
-    dbRef,
-) {
-    // const [entries, setEntries] = useState([])
+export default function Newsfeed() {
+    const [entries, setEntries] = useState([])
+    const { currentUser } = useAuth()
 
-    // useEffect(() => {
-    //     dbRef.on('value', (snapshot => {
-    //         const data = snapshot.val()
-    //         if (data) {
-    //             setEntries(data)
-    //         }
-    //     }))
+    useEffect(() => {
+        const dbRef =  app.database().ref("entries").child(currentUser.uid)
+        dbRef.on('value', (snapshot => {
+            const data = snapshot.val()
+            if (data) {
+                setEntries(data)
+            }
+        }))
 
-    //     return () => {
-    //         dbRef.off()
-    //     }
-    // }, [])
+        return () => {
+            dbRef.off()
+        }
+    }, [])
 
     return (
         <>
-        Hi!!
-            {/* {Object.keys(entries).reverse().map((key, _) => {
+            {Object.keys(entries).reverse().map((key, _) => {
                     return (
-                        <div className="flex flex-col items-end h-color shadow-md" style={{backgroundColor: entries[key].color}} >
+                        <div className="mood-item" style={{backgroundColor: entries[key].color}} >
                             {formatDate(key)}
-                            <button className="w-12">*</button>
+                            {entries[key].note}
+                            {/* <button className="w-12">*</button> */}
                         </div>
                     )
-                })} */}
+                })
+            }
         </>
     )
 }

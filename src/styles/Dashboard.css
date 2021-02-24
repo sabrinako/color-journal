@@ -1,0 +1,71 @@
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    background-color: var(--indigo-light);
+    box-shadow: 0px 0px 10px gray;
+    padding: 0.5rem;
+    z-index: 10000;
+}
+
+.dashboard-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.logout-button {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.dashboard-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.new-mood-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.circle-button {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: small;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--indigo);
+    color: white;
+}
+
+.mood-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 25rem;
+    width: 100%;
+}
+
+.date-label {
+    position:  sticky;
+    align-self: center;
+    background-color: white;
+    border-radius: 30%;
+    box-shadow: 0 0 5px gray;
+    padding: 0.5rem;
+}
