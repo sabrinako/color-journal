@@ -22,7 +22,7 @@
     padding: 1rem;
     box-shadow: 2px 2px 4px 4px gray;
     margin-top: 5rem;
-    border: 2px solid var(--indigo-light);
+    border: 2px solid var(--accent-light);
     border-radius: 10px;
     background-color: white;
     height: 70%;
@@ -50,17 +50,37 @@
     flex-wrap: wrap;
     width: 100%;
     height: 85%;
+    text-align: left;
 }
 
-.color-field {
-    font-family: var(--nunito);
+h3 {
+    margin-top: 0;
+    margin-bottom: 0.125rem;
+}
+
+.color-block {
+    width: 20px;
+    height: 20px;
+}
+/* .color-field {
+    font-family: var(--default-font);
     margin-top: 0.125rem;
-    border: 2px solid var(--indigo-light);
+    border: 2px solid var(--accent-light);
     border-radius: 5px;
     background-color: white;
     width: 192px;
-}
+} */
 
 .textarea-label {
+    width: 60%;
+    height: 75%;
+    padding-left: 1rem;
+}
 
+.notes-textarea {
+    border: 2px solid var(--accent-light);
+    border-radius: 10px;
+    width: 100%;
+    height: 75%;
+    /*sm:w-full sm:h-3/4*/
 }

@@ -6,8 +6,8 @@
     flex-direction: row;
     align-items: center;
     width: 100vw;
-    background-color: var(--indigo-light);
-    box-shadow: 0px 0px 10px gray;
+    background-color: white;
+    border-bottom: 1px solid var(--gray);
     padding: 0.5rem;
     z-index: 10000;
 }
@@ -24,6 +24,7 @@
 
 .dashboard-body {
     position: absolute;
+    overflow:hidden;
     top: 0;
     left: 0;
     width: 100vw;
@@ -31,6 +32,8 @@
     flex-direction: column;
     justify-content: center;
     justify-items: center;
+    align-items: center;
+    background-color: #f7f7f7;
 }
 
 .new-mood-button-wrapper {
@@ -49,23 +52,85 @@
     font-size: small;
     border-radius: 50%;
     border: 0;
-    background-color: var(--indigo);
+    background-color: var(--accent);
     color: white;
+}
+
+.newsfeed {
+    margin-bottom: 3rem;
+}
+
+.mood {
+    border: 1px solid var(--gray);
+    margin-bottom: 2rem;    
 }
 
 .mood-item {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    height: 25rem;
+    align-items: center;
+    height: 80vw;
     width: 100%;
 }
 
 .date-label {
-    position:  sticky;
-    align-self: center;
+    font-size: xx-small;
+    color: #929292;
+    padding-top: 0.125rem;
+}
+
+.mood-note {
     background-color: white;
-    border-radius: 30%;
-    box-shadow: 0 0 5px gray;
-    padding: 0.5rem;
+    padding: 1rem;
+    text-align: left;
+    font-size: smaller;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    width: 80vw;
+}
+
+.mood-note i {
+    color: #929292;
+}
+
+.kebab {
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+}
+
+.kebab:hover,focus {
+    background-color: var(--gray);
+}
+
+.kebab-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.125rem;
+}
+
+.kebab-menu button {
+    background-color: #f7f7f7;
+    font-family: var(--default-font);
+    border: 1px solid #929292;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+    .mood-item {
+        height: 40vw;
+        width: 40vw;
+    }
+
+    .mood-note {
+        width: calc(40vw - 2rem);
+    }
 }

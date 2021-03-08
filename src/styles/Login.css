@@ -11,6 +11,9 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .content-box {
@@ -53,9 +56,9 @@
     border: 0;
     outline: 0;
     background: transparent;
-    border-bottom: 3px solid var(--indigo-light);
+    border-bottom: 3px solid var(--accent-light);
 }
 
 .form-field:focus {
-    border-bottom: 3px solid var(--indigo-hover);
+    border-bottom: 3px solid var(--accent-hover);
 }
