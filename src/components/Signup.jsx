@@ -59,7 +59,7 @@ const Signup = () => {
             <span className="text-gray-700">Confirm Password</span>
             <input id="passwordConfirm" type="password" ref={inputPassConfirm} className="form-field" />
           </label>
-          <button type="submit" className="indigo-button">Submit</button>
+          <button type="submit" className="main-button">Submit</button>
         </form>
         <p>
           Already have an account?

@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    background-color: var(--light-gray);
     top: 0;
     left: 0;
 }
@@ -21,11 +22,10 @@
     flex-direction: column;
     background-color: white;
     width: 75%;
-    border-radius: 10px;
     justify-items: center;
     padding: 1rem;
     margin-bottom: 0.75rem;
-    box-shadow: 2px 2px 5px gray;
+    border: 1px solid var(--gray);
 }
 
 .form {
@@ -61,4 +61,10 @@
 
 .form-field:focus {
     border-bottom: 3px solid var(--accent-hover);
+}
+
+@media only screen and (min-width: 768px) {
+    .content-box {
+        width: 40vw;
+    }
 }

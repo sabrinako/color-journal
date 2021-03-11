@@ -7,6 +7,20 @@
   --accent-hover: #1c6494;
   --accent-dark: #2480BE;
   --gray: #B7B7B7;
+  --light-gray: #f7f7f7;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: var(--light-gray);
+  top: 0;
+  left: 0;
 }
 
 .h-color {
@@ -28,18 +42,9 @@ body {
 }
 
 h1 {
-  color: var(--accent);
   font-size: xx-large;
   font-weight: var(--bold-weight);
   margin-bottom: 0.75rem;
-}
-
-h2 {
-  color: var(--accent);
-}
-
-h3 {
-  color: var(--accent);
 }
 
 a {
@@ -52,24 +57,23 @@ a:focus {
   text-decoration: underline var(--accent);
 }
 
-.indigo-button {
+.main-button {
   display: inline-flex;
   justify-content: center;
   font-family: var(--default-font);
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: 0;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px gray;
   font-size: small;
   color: white;
   background-color: var(--accent);
 }
 
-.indigo-button:hover {
+.main-button:hover {
   background-color: var(--accent-hover);
 }
 
-.indigo-button:focus {
+.main-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-hover) ;
 }
