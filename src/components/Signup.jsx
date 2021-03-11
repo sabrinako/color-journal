@@ -1,17 +1,17 @@
 import '../styles/Login.css';
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Signup = () => {
   const inputEmail = useRef();
   const inputPass = useRef();
   const inputPassConfirm = useRef();
-  // const history = useHistory();
+  const history = useHistory();
 
   const [error, setError] = useState('');
 
-  const { signUp } = useAuth();
+  const { signUp, login } = useAuth();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,13 +19,11 @@ const Signup = () => {
     if (inputPass.current.value === inputPassConfirm.current.value) {
       signUp(inputEmail.current.value, inputPass.current.value)
         .then(() => {
-          // login(inputEmail.current.value, inputPass.current.value)
-          //   .then(
-          //     history.push("/")
-          //   )
-          //   .catch((e) => {
-          //       setError(e.message)
-          //   })
+          login(inputEmail.current.value, inputPass.current.value)
+            .then(history.push('/'))
+            .catch((loginError) => {
+              setError(loginError.message);
+            });
         })
         .catch((signUpError) => {
           setError(signUpError.message);

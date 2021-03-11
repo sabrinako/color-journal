@@ -42,7 +42,7 @@ body {
 }
 
 h1 {
-  font-size: xx-large;
+  font-size: 1.2rem;
   font-weight: var(--bold-weight);
   margin-bottom: 0.75rem;
 }

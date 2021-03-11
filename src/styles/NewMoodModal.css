@@ -12,21 +12,19 @@
 }
 
 .modal-box {
+    position: fixed;
+    margin-top: calc(100vh/2 - 300px);
     display: flex;
-    position: absolute;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
     justify-items: flex-start;
     align-items: flex-start;
-    padding: 1rem;
-    box-shadow: 2px 2px 4px 4px gray;
-    margin-top: 5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    box-shadow: 0 0 0 1000000px rgba(0, 0, 0, 0.2);
     border: 2px solid var(--accent-light);
     border-radius: 10px;
     background-color: white;
-    height: 70%;
-    width: 70%
 }
 
 .modal-header {
@@ -41,16 +39,21 @@
 }
 
 .close-modal-button {
+    background-color: transparent;
+    color: var(--accent);
+    border: 0;
     margin-left: auto;
+    margin-right: -5px;
+    font-size: 20pt;
 }
 
 .modal-form {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: 100%;
-    height: 85%;
     text-align: left;
+    align-items: center;
 }
 
 h3 {
@@ -62,25 +65,63 @@ h3 {
     width: 20px;
     height: 20px;
 }
-/* .color-field {
-    font-family: var(--default-font);
-    margin-top: 0.125rem;
-    border: 2px solid var(--accent-light);
-    border-radius: 5px;
-    background-color: white;
-    width: 192px;
-} */
-
-.textarea-label {
-    width: 60%;
-    height: 75%;
-    padding-left: 1rem;
-}
 
 .notes-textarea {
     border: 2px solid var(--accent-light);
     border-radius: 10px;
-    width: 100%;
-    height: 75%;
-    /*sm:w-full sm:h-3/4*/
+    width: 200px;
+    height: 200px;
+}
+
+.submit-mood-button {
+    width: 200px;
+    margin-top: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+    .modal-form {
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 450px;
+    }
+
+    .textarea-label {
+        margin-left: auto;
+    }
+
+    .submit-mood-button {
+        margin-left: auto;
+    }
+}
+
+@media only screen and (max-height: 736px) {
+    .modal-box {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin-top: 20%;
+    }
+
+    .notes-textarea {
+        height: 150px;
+    }
+}
+
+@media only screen and (max-height: 568px) {
+    .notes-textarea {
+        height: 100px;
+    }
+
+    .modal-box {
+        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+        margin-top: 25%;
+    }
+}
+
+@media only screen and (max-height: 653px) {
+    .notes-textarea {
+        height: 120px;
+    }
+
+    .modal-box {
+        margin-top: 30%;
+    }
 }

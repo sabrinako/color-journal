@@ -28,9 +28,19 @@ const KebabMenu = ({ keyId, entry }) => {
   return (
     <>
       <div />
-      <div className="kebab-menu">
-        <button type="button" onClick={onEdit}>Edit</button>
-        <button type="button" onClick={onDelete}>Delete</button>
+      <div className="kebab-wrapper">
+        <div className="triangle" />
+        <div className="kebab-menu">
+          <button type="button" onClick={onEdit}>
+            <i className="fas fa-edit" />
+            Edit
+          </button>
+          <div className="divider" />
+          <button type="button" onClick={onDelete}>
+            <i className="fas fa-trash-alt" />
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );
