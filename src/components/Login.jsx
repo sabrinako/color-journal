@@ -44,7 +44,7 @@ const Login = () => {
             <span className="text-gray-700">Password</span>
             <input id="password" type="password" ref={inputPass} className="form-field" />
           </label>
-          <button type="submit" className="indigo-button">
+          <button type="submit" className="main-button">
             Submit
           </button>
         </form>

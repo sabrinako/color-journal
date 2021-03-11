@@ -62,7 +62,7 @@ export default function NewMoodModal() {
               className="notes-textarea"
             />
           </label>
-          <button type="submit" className="indigo-button">Submit</button>
+          <button type="submit" className="main-button">Submit</button>
         </form>
       </div>
     </div>

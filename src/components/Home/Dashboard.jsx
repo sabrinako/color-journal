@@ -24,6 +24,11 @@ export default function Dashboard() {
     }
   };
 
+  const onKeyUp = (e) => {
+    e.preventDefault();
+    setShouldShowNewMoodModal(true);
+  };
+
   return (
     <>
       { shouldShowNewMoodModal
@@ -31,20 +36,23 @@ export default function Dashboard() {
       <div className="screen">
         <nav className="navbar">
           <h1 className="dashboard-title">Dashboard</h1>
-          <button onClick={handleLogout} className="indigo-button logout-button" type="submit">Logout</button>
+          <button onClick={handleLogout} className="main-button logout-button" type="submit">Logout</button>
         </nav>
 
         { error && <div className="error-callout">{error}</div> }
         <div className="dashboard-body">
           <div className="new-mood-button-wrapper">
             <button
+              className="new-mood-button"
               onClick={() => setShouldShowNewMoodModal(true)}
-              className="circle-button"
               type="button"
+              id="new_mood"
+              tabIndex={0}
+              onKeyUp={onKeyUp}
             >
-              +
+              <i className="fas fa-plus-circle" />
+              New Mood
             </button>
-            New Mood
           </div>
           <Newsfeed />
         </div>
