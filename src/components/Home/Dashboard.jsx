@@ -10,6 +10,7 @@ import NewMoodModal from './NewMoodModal';
 export default function Dashboard() {
   const { logout } = useAuth();
   const { shouldShowNewMoodModal, setShouldShowNewMoodModal } = useNewMoodModal();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [error, setError] = useState('');
   const history = useHistory();
@@ -25,8 +26,10 @@ export default function Dashboard() {
   };
 
   const onKeyUp = (e) => {
-    e.preventDefault();
-    setShouldShowNewMoodModal(true);
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      setShouldShowNewMoodModal(true);
+    }
   };
 
   return (
@@ -34,26 +37,46 @@ export default function Dashboard() {
       { shouldShowNewMoodModal
           && <NewMoodModal />}
       <div className="screen">
-        <nav className="navbar">
-          <h1 className="dashboard-title">Dashboard</h1>
-          <button onClick={handleLogout} className="main-button logout-button" type="submit">Logout</button>
+        <nav>
+          <div className="navbar">
+            <h1 className="dashboard-title">Dashboard</h1>
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="hamburger-button"
+            >
+              <i className="fas fa-bars" />
+            </button>
+          </div>
+          {isMenuOpen
+            && (
+            <ul className="hamburger-menu">
+              <button
+                onClick={() => {
+                  setShouldShowNewMoodModal(true);
+                  setIsMenuOpen(false);
+                }}
+                type="button"
+                id="new_mood"
+                tabIndex={0}
+                onKeyUp={onKeyUp}
+              >
+                New Mood
+                <i className="fas fa-plus-circle" />
+              </button>
+              <button
+                onClick={handleLogout}
+                type="submit"
+              >
+                Logout
+                <i className="fas fa-sign-out-alt" />
+              </button>
+            </ul>
+            )}
         </nav>
 
         { error && <div className="error-callout">{error}</div> }
         <div className="dashboard-body">
-          <div className="new-mood-button-wrapper">
-            <button
-              className="new-mood-button"
-              onClick={() => setShouldShowNewMoodModal(true)}
-              type="button"
-              id="new_mood"
-              tabIndex={0}
-              onKeyUp={onKeyUp}
-            >
-              <i className="fas fa-plus-circle" />
-              New Mood
-            </button>
-          </div>
           <Newsfeed />
         </div>
       </div>

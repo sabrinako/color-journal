@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import '../../styles/NewMoodModal.css';
 import React from 'react';
 import { HslColorPicker } from 'react-colorful';
@@ -44,15 +45,15 @@ export default function NewMoodModal() {
             className="circle-button close-modal-button"
             type="submit"
           >
-            x
+            <i className="fas fa-times-circle" />
           </button>
         </div>
         <form className="modal-form" onSubmit={createNewEntry}>
-          {/* <label className="picker-label" htmlFor="main"> */}
-          <h3>Color</h3>
-          <HslColorPicker id="main" color={color} onChange={setColor} />
-          <span className="color-block" style={{ backgroundColor: `hsl(${color.h}, ${color.s}, ${color.l})` }} />
-          {/* </label> */}
+          <label className="picker-label" htmlFor="main">
+            <h3>Color</h3>
+            <HslColorPicker id="main" color={color} onChange={setColor} />
+            <span className="color-block" style={{ backgroundColor: `hsl(${color.h}, ${color.s}, ${color.l})` }} />
+          </label>
           <label className="textarea-label" htmlFor="note">
             <h3>Notes</h3>
             <textarea
@@ -62,7 +63,7 @@ export default function NewMoodModal() {
               className="notes-textarea"
             />
           </label>
-          <button type="submit" className="main-button">Submit</button>
+          <button type="submit" className="main-button submit-mood-button">Submit</button>
         </form>
       </div>
     </div>

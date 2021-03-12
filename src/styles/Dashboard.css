@@ -6,10 +6,52 @@
     flex-direction: row;
     align-items: center;
     width: 100vw;
+    height: 5vh;
     background-color: white;
     border-bottom: 1px solid var(--gray);
     padding: 0.5rem;
     z-index: 10000;
+}
+
+.hamburger-button {
+    background-color: transparent;
+    border: 0;
+    margin-left: auto;
+    font-size: 20pt;
+    margin-right: 20px;
+}
+
+.hamburger-menu {
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 7vh;
+    z-index: 100;
+    width: 40vw;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    border: 1px solid var(--gray);
+    background-color: white;
+    border-bottom: 0;
+}
+
+.hamburger-menu button {
+    background-color: transparent;
+    border: 0;
+    font-family: var(--default-font);
+    font-weight: var(--bold-weight);
+    font-size: 15pt;
+    width: 100%;
+    border-bottom: 1px solid var(--gray);
+    padding: 12px 10px 10px 5px;
+    text-align: right;
+    color: var(--accent);
+}
+
+.hamburger-menu button i {
+    margin-left: 5px;
 }
 
 .dashboard-title {
@@ -25,7 +67,7 @@
 .dashboard-body {
     position: absolute;
     overflow:hidden;
-    top: 0;
+    top: 12vh;
     left: 0;
     width: 100vw;
     display: flex;
@@ -34,26 +76,6 @@
     justify-items: center;
     align-items: center;
     background-color: var(--light-gray);
-}
-
-.new-mood-button-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 20rem;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.circle-button {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: small;
-    border-radius: 50%;
-    border: 0;
-    background-color: var(--accent);
-    color: white;
 }
 
 .newsfeed {
@@ -108,20 +130,52 @@
     background-color: var(--gray);
 }
 
+.kebab-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.triangle {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--light-gray);
+    border-top: 0px solid transparent;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 8px;
+}
+
 .kebab-menu {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding: 0.125rem;
+    align-items: center;
+    background-color: var(--light-gray);
+    border-radius: 5px;
+}
+
+.divider {
+    height: 0px;
+    border-bottom: 1px solid  var(--gray);
+    width: 100%;
 }
 
 .kebab-menu button {
-    background-color: #f7f7f7;
+    display: inline-flex;
+    justify-content: center;
     font-family: var(--default-font);
-    border: 1px solid #929292;
+    font-weight: var(--bold-weight);
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border: 0;
     border-radius: 5px;
-    width: 100%;
-    margin-bottom: 2px;
+    color: var(--accent);
+    background-color: transparent;
+    margin: 4px;
+}
+
+.kebab-menu button i {
+    color: var(--accent);
+    margin-right: 5px;
 }
 
 @media only screen and (min-width: 768px) {
