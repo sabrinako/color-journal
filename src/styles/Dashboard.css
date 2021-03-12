@@ -69,16 +69,16 @@
     top: 12vh;
     left: 0;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
     background-color: var(--light-gray);
 }
 
 .newsfeed {
     margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 .mood {
@@ -178,12 +178,23 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .newsfeed {
+        padding: 0rem 1rem 0rem 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .mood {
+        margin: 1.5rem;
+    }
+
     .mood-item {
-        height: 40vw;
-        width: 40vw;
+        height: 25vw;
+        width: 25vw;
     }
 
     .mood-note {
-        width: calc(40vw - 2rem);
+        width: calc(25vw - 2rem);
     }
 }
