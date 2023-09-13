@@ -7,8 +7,8 @@ import { useNewMoodModal } from '../../contexts/NewMoodContext';
 import Newsfeed from './Newsfeed';
 import NewMoodModal from './NewMoodModal';
 
-export default function Dashboard() {
-  const { logout } = useAuth();
+const Dashboard = () => {
+  const { logout, setCurrentUser } = useAuth();
   const { shouldShowNewMoodModal, setShouldShowNewMoodModal } = useNewMoodModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -17,12 +17,14 @@ export default function Dashboard() {
 
   const handleLogout = async () => {
     setError('');
-    try {
-      await logout();
-      history.push('/login');
-    } catch {
-      setError('FAILED LOGOUT');
-    }
+    logout()
+      .then(() => {
+        setCurrentUser({});
+        history.push('/login');
+      })
+      .catch(() => {
+        setError('FAILED LOGOUT');
+      });
   };
 
   const onKeyUp = (e) => {
@@ -34,6 +36,7 @@ export default function Dashboard() {
 
   return (
     <>
+      Hello
       { shouldShowNewMoodModal
           && <NewMoodModal />}
       <div className="screen">
@@ -82,4 +85,6 @@ export default function Dashboard() {
       </div>
     </>
   );
-}
+};
+
+export default Dashboard;

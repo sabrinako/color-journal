@@ -10,7 +10,7 @@ import PrivateRoute from './PrivateRoute';
 function App() {
   return (
     <>
-      <Router>
+      <Router forceRefresh>
         <AuthProvider>
           <Switch>
             <Route path="/signup" component={Signup} />
@@ -20,7 +20,11 @@ function App() {
           </Switch>
           <Switch>
             <NewMoodProvider>
-              <PrivateRoute exact path="/" component={Dashboard} />
+              <Route exact path="/">
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              </Route>
             </NewMoodProvider>
           </Switch>
         </AuthProvider>

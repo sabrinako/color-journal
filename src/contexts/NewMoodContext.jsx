@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { child, set } from 'firebase/database';
 
 const NewMoodContext = React.createContext();
 
@@ -15,8 +16,8 @@ export function NewMoodProvider({ children }) {
   const [moodKey, setMoodKey] = useState(); // only used when editing
 
   const createNewMood = (currentUserEntriesRef) => {
-    const newEntryRef = currentUserEntriesRef.child(Date.now());
-    newEntryRef.set({
+    const newEntryRef = child(currentUserEntriesRef, Date.now().toString());
+    set(newEntryRef, {
       h: color.h,
       s: color.s,
       l: color.l,
@@ -32,7 +33,7 @@ export function NewMoodProvider({ children }) {
   };
 
   const editMood = (currentMoodRef) => {
-    currentMoodRef.set({
+    set(currentMoodRef, {
       h: color.h,
       s: color.s,
       l: color.l,

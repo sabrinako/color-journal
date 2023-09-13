@@ -2,7 +2,8 @@
 import '../../styles/NewMoodModal.css';
 import React from 'react';
 import { HslColorPicker } from 'react-colorful';
-import app from '../../firebase';
+import { ref, child } from 'firebase/database';
+import { rtdb } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNewMoodModal } from '../../contexts/NewMoodContext';
 
@@ -18,15 +19,15 @@ export default function NewMoodModal() {
     isNewMood,
     moodKey,
   } = useNewMoodModal();
-  const { currentUser } = useAuth();
+  const { user } = useAuth();
 
   const createNewEntry = (e) => {
     e.preventDefault();
     if (isNewMood) {
-      const currentUserEntriesRef = app.database().ref('entries').child(currentUser.uid);
+      const currentUserEntriesRef = child(ref(rtdb, 'entries'), user.uid);
       createNewMood(currentUserEntriesRef);
     } else {
-      const moodRef = app.database().ref('entries').child(currentUser.uid).child(moodKey);
+      const moodRef = child(child(ref(rtdb, 'entries'), user.uid), moodKey);
       editMood(moodRef);
     }
   };
