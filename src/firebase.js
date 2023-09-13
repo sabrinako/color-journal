@@ -1,6 +1,6 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import { getDatabase, connectDatabaseEmulator } from 'firebase/database';
 
 const config = {
   apiKey: 'AIzaSyD1jXb55ZjxnNX6DgTkE8ChMZsJjqQivQo',
@@ -13,11 +13,11 @@ const config = {
   measurementId: 'G-LYGKFSG0QD',
 };
 
-const app = firebase.initializeApp(config);
-export const auth = app.auth();
-// auth.useEmulator('http://localhost:9099');
+const app = initializeApp(config);
+export const auth = getAuth(app);
+connectAuthEmulator(auth, 'http://localhost:9099');
 
-export const rtdb = app.database();
-// rtdb.useEmulator('localhost', 9000);
+export const rtdb = getDatabase(app);
+connectDatabaseEmulator(rtdb, 'localhost', 9000);
 
 export default app;

@@ -70,7 +70,7 @@ const MoodTile = ({ keyId, entry }) => {
 
 MoodTile.propTypes = {
   keyId: PropTypes.string.isRequired,
-  entry: PropTypes.objectOf(PropTypes.number).isRequired,
+  entry: PropTypes.objectOf(PropTypes.oneOf([PropTypes.number, PropTypes.string])).isRequired,
 };
 
 export default MoodTile;

@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import { auth } from '../firebase';
 
 const AuthContext = React.createContext();
@@ -9,34 +15,39 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
+  const [user, setUser] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setIsLoading(false);
+      }
+      setUser(currentUser);
+    }); // this function returns a function that unsubscribes from this state change
+
+    return () => unsubscribe();
+  }, []);
 
   function signUp(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
-    return auth.signOut();
+    return signOut(auth);
   }
 
   const value = {
-    currentUser,
+    user,
+    isLoading,
     signUp,
     login,
     logout,
   };
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    }); // this function returns a function that unsubscribes from this state change
-
-    return unsubscribe;
-  }, []);
 
   return (
     <AuthContext.Provider value={value}>
