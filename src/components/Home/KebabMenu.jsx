@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import app from '../../firebase';
+import { ref, child, remove } from 'firebase/database';
+import { rtdb } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNewMoodModal } from '../../contexts/NewMoodContext';
 
 const KebabMenu = ({ keyId, entry }) => {
-  const { currentUser } = useAuth();
+  const { user } = useAuth();
   const {
     setColor, setNote, setShouldShowNewMoodModal, setIsNewMood, setMoodKey,
   } = useNewMoodModal();
@@ -21,8 +22,8 @@ const KebabMenu = ({ keyId, entry }) => {
 
   const onDelete = (e) => {
     e.preventDefault();
-    const currentMoodRef = app.database().ref('entries').child(currentUser.uid).child(keyId);
-    currentMoodRef.remove();
+    const currentMoodRef = child(child(ref(rtdb, 'entries'), user.uid), keyId);
+    remove(currentMoodRef);
   };
 
   return (
